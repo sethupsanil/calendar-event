@@ -1,0 +1,18 @@
+<div *ngIf="showMoreList.length !== 0" class="add-event">
+  <div class="add-event-header">
+    <button class="close-btn" (click)="onClickClose()">
+      <fa-icon class="head-icon" [icon]="icon"></fa-icon>
+    </button>
+  </div>
+  <div class="add-event-content">
+    <div class="event-details">
+      <div class="events" *ngFor="let eventItem of showMoreList">
+        <div (click)="onClickEvent(eventItem, $event)" class="event-badge">
+          <span class="event-badge-text">{{
+            eventItem.title || fallbackTitle
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

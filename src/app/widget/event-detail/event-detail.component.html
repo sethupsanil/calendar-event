@@ -1,0 +1,25 @@
+<div *ngIf="eventDetails" class="add-event">
+  <div class="add-event-header">
+    <button (click)="onEditClicked($event)" class="">
+      <fa-icon [icon]="icons.pen"></fa-icon>
+    </button>
+    <button (click)="onDeleteClicked()" class="">
+      <fa-icon [icon]="icons.delete"></fa-icon>
+    </button>
+    <button (click)="onCloseClicked()" class="close-btn">
+      <fa-icon [icon]="icons.close"></fa-icon>
+    </button>
+  </div>
+  <div class="add-event-content">
+    <div class="event-details">
+      <h4 class="event-name">
+        <fa-icon class="head-icon" [icon]="icons.list"></fa-icon
+        >{{ eventDetails.title || fallbackTitle }}
+      </h4>
+      <h6 class="event-date">
+        <fa-icon class="head-icon" [icon]="icons.calendar"></fa-icon
+        >{{ eventDetails.date | date : "dd/MMM/YYYY" }}
+      </h6>
+    </div>
+  </div>
+</div>

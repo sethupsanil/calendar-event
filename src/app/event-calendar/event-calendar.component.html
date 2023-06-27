@@ -1,0 +1,86 @@
+<div class="wrapper">
+  <!--Header-->
+  <header>
+    <div class="container">
+      <div class="header">
+        <h1 class="main-heading">Event Calendar</h1>
+        <button class="btn" (click)="openEventDialog($event)">New</button>
+      </div>
+    </div>
+  </header>
+  <!--Header end-->
+
+  <div class="container">
+    <div class="calendar">
+      <div class="calendar-header">
+        <button class="calendar-arrows" (click)="previousMonth()">&lt;</button>
+        <h2 class="calendar-month">{{ currentMonth | date : "MMM YYYY" }}</h2>
+        <button class="calendar-arrows" (click)="nextMonth()">&gt;</button>
+      </div>
+      <div class="days">
+        <div
+          *ngFor="let day of daysInMonth"
+          (click)="isNewEvent = true; showAddEventDialog($event, day)"
+          (dragover)="allowDrop($event)"
+          (drop)="drop($event, getDateKey(day))"
+          class="day"
+        >
+          {{ day }}
+
+          <div class="list-event-wrapper">
+            <div
+              class="events"
+              *ngFor="
+                let eventItem of eventsByDate[getDateKey(day)] | slice : 0 : 2
+              "
+              draggable="true"
+              (click)="onEventClicked($event, eventItem, day)"
+              (dragstart)="dragStart($event, eventItem)"
+            >
+              <div class="event-badge" [draggable]="false">
+                <span class="event-badge-text">{{
+                  eventItem.title.length > 15
+                    ? eventItem.title.slice(0, 15) + "..."
+                    : eventItem.title
+                }}</span>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="eventsByDate[getDateKey(day)]">
+            <span
+              class="event-dot"
+              (click)="onShowMoreClicked(day, $event)"
+            ></span>
+            <span
+              (click)="onShowMoreClicked(day, $event)"
+              *ngIf="eventsByDate[getDateKey(day)].length > 2"
+              class="show-more"
+              >{{ eventsByDate[getDateKey(day)].length - 2 }} more
+            </span>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="event-wrapper" #addEventWrapper>
+  <app-create-event
+    *ngIf="selectedEvent"
+    [selectedEvent]="selectedEvent"
+    (saveEvent)="saveEvent($event)"
+    (closeAddEvent)="closeAddEvent()"
+  ></app-create-event>
+  <app-event-detail
+    (closeClicked)="closeAddEvent()"
+    (deleteClicked)="deleteEvent($event)"
+    (editClicked)="editEvent($event)"
+    [eventDetails]="eventDetails"
+    *ngIf="eventDetails"
+  ></app-event-detail>
+  <app-show-more
+    (closeEvent)="closeAddEvent()"
+    (eventBadgeClicked)="onShowMoreEvent($event)"
+    [showMoreList]="showMoreList"
+    *ngIf="showMoreList.length !== 0"
+  ></app-show-more>
+</div>

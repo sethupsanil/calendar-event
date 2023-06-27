@@ -1,0 +1,28 @@
+<div *ngIf="selectedEvent" class="add-event">
+  <div class="add-event-header">
+    <button (click)="onCloseClicked()" class="close-btn">
+      <fa-icon [icon]="close"></fa-icon>
+    </button>
+  </div>
+  <div class="add-event-content">
+    <div class="relative">
+      <input
+        type="text"
+        [(ngModel)]="selectedEvent.title"
+        class="form-field"
+        placeholder="Add title and Time"
+      />
+    </div>
+    <div class="relative">
+      <input
+        type="date"
+        [(ngModel)]="formattedDate"
+        class="form-field"
+        placeholder="Select Date"
+      />
+    </div>
+    <div class="modal-footer-area">
+      <button (click)="onSave(selectedEvent)" class="btn">Save</button>
+    </div>
+  </div>
+</div>

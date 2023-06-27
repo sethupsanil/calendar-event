@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary-font: "Poppins", sans-serif;
+  --primary-color: #dd296f;
+  --base-color: rgba(0, 0, 0, 0.8);
+  --border--color: rgba(0, 0, 0, 0.1);
+}
+* {
+  font-family: var(--primary-font);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--base-color);
+  box-sizing: border-box;
+}
+
+body {
+  background: #f2f6f8;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  justify-content: space-between;
+}
+header {
+  background: #fff;
+  margin: 0 0 40px;
+  box-shadow: -0px 4px 16px 0px #0000001a;
+}
+.main-heading {
+  font-size: 24px;
+  font-weight: 600;
+}
+.btn {
+  padding: 3px 20px;
+  border-radius: 8px;
+}
+.relative {
+  margin: 0 0 10px;
+}
+.form-field {
+  background: #f2f6f8;
+  width: 100%;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  min-height: 40px;
+  border: none;
+}
+
+.event-wrapper {
+  background: #fff;
+  border: none;
+  min-width: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: fixed;
+  display: none;
+  animation: showEventWrapper 0.3s ease-in-out forwards;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+}
+.add-event-header {
+  background: #f2f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 3px 10px;
+}
+.close-btn {
+  font-weight: 600;
+  background: none;
+  color: var(--base-color);
+}
+.add-event-content {
+  padding: 15px;
+}
+.modal-footer-area {
+  padding: 0;
+}
+
+.add-event-header button {
+  background: none;
+  padding: 0px 7px;
+  font-size: 10px;
+  color: var(--base-color);
+}
+
+.event-details .event-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 7px;
+}
+.event-details .event-name .head-icon {
+  margin: 0 10px 0 0;
+}
+.event-details .event-date {
+  font-size: 12px;
+  margin: 0;
+}
+.event-details .event-date .head-icon {
+  margin: 0 10px 0 0;
+}
+.calendar-month {
+  min-width: 65px;
+}
+.mt-3 {
+  margin: 10px 0 0;
+}
+.events {
+  margin-top: 8px;
+}
+
+.events div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 8px;
+  border: 1px solid var(--border--color);
+  border-radius: 4px;
+}
+.event-dot {
+  display: none;
+}
+.events,
+.event-badge {
+  font-size: 10px !important;
+  padding: 0 !important;
+  border: none !important;
+  background: var(--primary-color) !important;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.event-badge-text {
+  color: #fff !important;
+  padding: 3px 10px;
+  font-size: 12px !important;
+}
+button,
+svg {
+  cursor: pointer;
+}
+@keyframes showEventWrapper {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 1366px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (max-width: 1199px) {
+  .container {
+    max-width: 990px;
+  }
+}
+@media (max-width: 991px) {
+  *,
+  .head-icon {
+    font-size: 13px;
+  }
+
+  .container {
+    max-width: 760px;
+  }
+  .main-heading {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  .btn {
+    font-size: 12px;
+    padding: 8px 20px;
+    border-radius: 5px;
+  }
+  .header {
+    padding: 5px 0;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    max-width: 100%;
+  }
+  .event-dot {
+    display: inline-block;
+    height: 10px;
+    border-radius: 50%;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+  }
+  .list-event-wrapper {
+    display: none;
+  }
+}
