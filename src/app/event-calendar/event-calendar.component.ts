@@ -72,9 +72,7 @@ export class EventCalendarComponent implements OnInit {
 
     this.eventDetails = { ...eventItem };
     this.selectedEvent = null;
-    if (this.addEventWrapper.nativeElement && this.selectedDate !== day) {
-      this.setDialoguePosition();
-    }
+    this.setDialoguePosition();
     this.selectedDate = day;
   }
   onShowMoreEvent(eventData: { data: CalendarEvent; event: MouseEvent }) {

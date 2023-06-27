@@ -66,6 +66,7 @@ header {
   background: #fff;
   border: none;
   min-width: 250px;
+  max-width: 350px;
   border-radius: 8px;
   overflow: hidden;
   position: fixed;
